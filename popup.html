@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gistify</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Hello from popup!
+    <h2>Welcome to Gistify</h2>
+
+    <!-- select type -->
+     <div>
+         <select id = "summary-type">
+             <option value="short">Short</option>
+             <option value="detailed">Detailed</option>
+             <option value="bullets">Bullet Points</option>
+         </select>
+
+    </div>
+    <!-- buttons -->
+     <div>
+        <button id = "summarize-btn">Summarize</button>
+        <button id = "copy-btn">Copy</button>
+     </div>
+
+
+    <pre id = "result">Select a type & click Summarize</pre>
+
+    <script src = "popup.js"></script>
 </body>
 </html>
