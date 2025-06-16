@@ -1,14 +1,14 @@
  document.addEventListener("DOMContentLoaded", ()=>{
-    chrome.storage.sync.get(["geminiApiKey"], ({geminiApikey})=>{
-        if(geminiApikey) 
-            document.getElementById("api-key").value = geminiApikey;
+    chrome.storage.sync.get(["geminiApiKey"], ({geminiApiKey})=>{
+        if(geminiApiKey) 
+            document.getElementById("api-key").value = geminiApiKey;
     });
 
     document.getElementById("save-btn").addEventListener("click", ()=>{
         const apiKey = document.getElementById("api-key").value.trim();
         if(!apiKey) return;
 
-        chrome.storage.sync.set({geminiApikey: apiKey}, ()=>{
+        chrome.storage.sync.set({geminiApiKey: apiKey}, ()=>{
             document.getElementById("success-msg").style.display = "block";
             setTimeout(()=> window.close(), 1000);
         })
