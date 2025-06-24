@@ -3,7 +3,7 @@
     "name": "Gistify",
     "version": "1.0",
     "description":"Summarize any webpage using Gemini AI - get the gist in seconds.",
-    "permissions": ["tabs", "scripting", "activeTab", "storage"],
+    "permissions": ["scripting", "activeTab", "storage"],
     "host_permissions": ["<all_urls>"],
 
     "action":{

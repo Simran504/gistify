@@ -8,6 +8,7 @@ document.getElementById("summarize-btn").addEventListener("click", () => {
 
     // Step 1: Retrieve user's Gemini API key from Chrome storage
     chrome.storage.sync.get(["geminiApiKey"], ({ geminiApiKey }) => {
+        console.log("🔑 Loaded API key:", geminiApiKey);
         if (!geminiApiKey) {
             resultDiv.textContent = "No API key set. Click the gear icon to add one.";
             return;
@@ -18,8 +19,8 @@ document.getElementById("summarize-btn").addEventListener("click", () => {
             chrome.tabs.sendMessage(
                 tab.id,
                 { type: "GET_ARTICLE_TEXT" },
-                async ({ text }) => {
-                    if (!text) {
+                async (response) => {
+                    if (!response || !response.text) {
                         resultDiv.textContent = "Couldn't extract text from this page.";
                         return;
                     }
@@ -27,7 +28,7 @@ document.getElementById("summarize-btn").addEventListener("click", () => {
                     // Step 3: Call Gemini API to summarize the text
                     try {
                         const summary = await getGeminiSummary(
-                            text,
+                            response.text,
                             summaryType,
                             geminiApiKey
                         );
